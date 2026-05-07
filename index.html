@@ -142,19 +142,6 @@
       animation: fadeUp 1s ease 1.4s forwards;
     }
 
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: var(--sable);
-      animation: scrollDown 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollDown {
-      0% { transform: scaleY(0); transform-origin: top; }
-      50% { transform: scaleY(1); transform-origin: top; }
-      51% { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; }
-    }
 
     /* BANDE TEXTE DÉFILANT */
     .ticker {
@@ -526,10 +513,6 @@
     <h1 class="hero-title">CÔTE<br><em>VIVE</em></h1>
     <div class="hero-divider"></div>
     <p class="hero-sub">Sud de France · Drops limités · Bientôt disponible</p>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      Découvrir
-    </div>
   </section>
 
   <!-- TICKER -->
