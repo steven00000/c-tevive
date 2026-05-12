@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CÔTE VIVE — Riviera · Sud de France</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --nuit: #1A1814;
       --lin: #F0ECE4;
@@ -17,494 +15,124 @@
       --marine: #1B3A5C;
       --calanque: #7A9E8E;
       --lin-fonce: #DDD5C7;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', Arial, sans-serif;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--lin);
-      color: var(--nuit);
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    /* GRAIN OVERLAY */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0.4;
-    }
+    body { background: var(--lin); color: var(--nuit); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
-      padding: 1.5rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      mix-blend-mode: multiply;
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 1.1rem;
-      letter-spacing: 0.3em;
-      color: var(--nuit);
-      text-decoration: none;
-    }
-
-    .nav-right {
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--nuit);
-      opacity: 0.5;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--lin); border-bottom: 0.5px solid var(--lin-fonce); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 1.1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.3em; font-weight: 400; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.6; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 1; }
 
     /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      position: relative;
-    }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; }
+    .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--sable); margin-bottom: 2rem; animation: fadeUp 1s ease 0.3s both; }
+    .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(4rem, 12vw, 9rem); line-height: 0.9; letter-spacing: 0.06em; animation: fadeUp 1.2s ease 0.5s both; }
+    .hero-title em { font-style: italic; color: var(--marine); }
+    .hero-divider { width: 1px; height: 60px; background: var(--sable); margin: 2.5rem auto; animation: fadeUp 1s ease 0.8s both; }
+    .hero-sub { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; opacity: 0.6; margin-bottom: 3rem; animation: fadeUp 1s ease 1s both; }
+    .btn { display: inline-block; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; padding: 1rem 2.5rem; border: 0.5px solid var(--nuit); background: var(--nuit); color: var(--lin); transition: background 0.25s; cursor: pointer; font-family: var(--sans); font-weight: 300; }
+    .btn:hover { background: var(--marine); border-color: var(--marine); }
+    .btn-outline { background: transparent; color: var(--nuit); border: 0.5px solid var(--nuit); }
+    .btn-outline:hover { background: var(--nuit); color: var(--lin); }
+    .btn-insta { background: var(--marine); border-color: var(--marine); color: var(--lin); font-size: 0.75rem; padding: 1.1rem 3rem; }
+    .btn-insta:hover { background: #1a4d82; }
 
-    .hero-eyebrow {
-      font-size: 0.6rem;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--sable);
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 1s ease 0.3s forwards;
-    }
+    /* TICKER */
+    .ticker { background: var(--nuit); color: var(--lin); padding: 0.8rem 0; overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-flex; animation: ticker 20s linear infinite; }
+    .ticker-item { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; padding: 0 2.5rem; }
+    .ticker-dot { color: var(--sable); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(3.5rem, 10vw, 8rem);
-      line-height: 0.95;
-      letter-spacing: 0.08em;
-      color: var(--nuit);
-      opacity: 0;
-      animation: fadeUp 1.2s ease 0.5s forwards;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: var(--marine);
-    }
-
-    .hero-divider {
-      width: 1px;
-      height: 60px;
-      background: var(--sable);
-      margin: 2.5rem auto;
-      opacity: 0;
-      animation: fadeUp 1s ease 0.8s forwards;
-    }
-
-    .hero-sub {
-      font-size: 0.7rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--nuit);
-      opacity: 0;
-      animation: fadeUp 1s ease 1s forwards;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.6rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--sable);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      animation: fadeUp 1s ease 1.4s forwards;
-    }
-
-
-    /* BANDE TEXTE DÉFILANT */
-    .ticker {
-      background: var(--nuit);
-      color: var(--lin);
-      padding: 0.85rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .ticker-inner {
-      display: inline-flex;
-      animation: ticker 18s linear infinite;
-    }
-
-    .ticker-item {
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      padding: 0 3rem;
-    }
-
-    .ticker-dot {
-      color: var(--sable);
-    }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* SECTION IDENTITÉ */
-    .section-identite {
-      padding: 8rem 2.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .identite-left {}
-
-    .section-number {
-      font-size: 0.6rem;
-      letter-spacing: 0.4em;
-      color: var(--sable);
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.15;
-      color: var(--nuit);
-      margin-bottom: 1.5rem;
-    }
-
+    /* PRODUITS */
+    .section { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.6rem; letter-spacing: 0.45em; text-transform: uppercase; color: var(--sable); margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 3rem; }
     .section-title em { font-style: italic; color: var(--marine); }
 
-    .section-body {
-      font-size: 0.85rem;
-      line-height: 1.9;
-      color: var(--nuit);
-      opacity: 0.7;
-    }
-
-    .identite-right {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-
-    .identite-item {
-      padding: 1.25rem 0;
-      border-bottom: 0.5px solid var(--lin-fonce);
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-
-    .identite-item:first-child { border-top: 0.5px solid var(--lin-fonce); }
-
-    .identite-key {
-      font-size: 0.62rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--sable);
-    }
-
-    .identite-val {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: var(--nuit);
-      letter-spacing: 0.05em;
-    }
-
-    /* SECTION COLLECTION */
-    .section-collection {
-      background: var(--nuit);
-      padding: 8rem 2.5rem;
-      text-align: center;
-    }
-
-    .collection-eyebrow {
-      font-size: 0.6rem;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--sable);
-      margin-bottom: 1.5rem;
-    }
-
-    .collection-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      color: var(--lin);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      letter-spacing: 0.05em;
-    }
-
-    .collection-sub {
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--calanque);
-      margin-bottom: 4rem;
-    }
-
-    /* PRODUITS PLACEHOLDER */
-    .produits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      max-width: 860px;
-      margin: 0 auto 4rem;
-    }
-
-    .produit-card {
-      background: #221F1A;
-      border: 0.5px solid #2E2B25;
-      border-radius: 4px;
-      aspect-ratio: 3/4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      transition: border-color 0.3s;
-      cursor: default;
-    }
-
+    .produits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 4rem; }
+    .produit-card { border: 0.5px solid var(--lin-fonce); border-radius: 4px; overflow: hidden; transition: border-color 0.3s; }
     .produit-card:hover { border-color: var(--sable); }
+    .produit-img { aspect-ratio: 4/3; background: var(--lin-fonce); overflow: hidden; position: relative; }
+    .produit-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+    .produit-card:hover .produit-img img { transform: scale(1.03); }
+    .produit-badge { position: absolute; top: 1rem; left: 1rem; background: var(--nuit); color: var(--lin); font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; padding: 4px 10px; }
+    .produit-info { padding: 1.25rem; }
+    .produit-ref { font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--sable); margin-bottom: 0.4rem; }
+    .produit-nom { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.3rem; }
+    .produit-desc { font-size: 0.78rem; color: var(--nuit); opacity: 0.55; line-height: 1.6; margin-bottom: 1rem; }
+    .produit-footer { display: flex; align-items: center; justify-content: space-between; }
+    .produit-prix { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; }
+    .produit-tailles { font-size: 0.62rem; letter-spacing: 0.2em; opacity: 0.45; text-transform: uppercase; }
 
-    .produit-icon {
-      width: 48px;
-      height: 60px;
-      border: 0.5px solid #3A3730;
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    /* COMMENT COMMANDER */
+    .section-dark { background: var(--nuit); color: var(--lin); }
+    .section-dark .section { max-width: 100%; padding: 7rem 2rem; }
+    .section-dark-inner { max-width: 1100px; margin: 0 auto; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0; }
+    .step-card { text-align: center; padding: 2rem 1rem; border: 0.5px solid #2E2B25; border-radius: 4px; }
+    .step-num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--sable); line-height: 1; margin-bottom: 1rem; opacity: 0.6; }
+    .step-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 300; color: var(--lin); margin-bottom: 0.75rem; }
+    .step-desc { font-size: 0.78rem; color: var(--lin); opacity: 0.5; line-height: 1.7; }
+    .step-desc strong { color: var(--sable); opacity: 1; font-weight: 400; }
 
-    .produit-icon svg { opacity: 0.25; }
+    /* MESSAGE FORMAT */
+    .message-box { background: #221F1A; border: 0.5px solid #2E2B25; border-radius: 4px; padding: 1.5rem 2rem; max-width: 600px; margin: 0 auto 3rem; font-family: var(--sans); }
+    .message-line { font-size: 0.82rem; color: var(--lin); opacity: 0.7; line-height: 2; }
+    .message-line span { color: var(--sable); opacity: 1; }
+    .message-label { font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--calanque); margin-bottom: 1rem; }
 
-    .produit-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--sable);
-      opacity: 0.5;
-    }
-
-    .produit-coming {
-      font-size: 0.55rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--calanque);
-      opacity: 0.6;
-    }
-
-    /* FORM INSCRIPTION */
-    .section-notif {
-      padding: 8rem 2rem;
-      text-align: center;
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .notif-eyebrow {
-      font-size: 0.6rem;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--sable);
-      margin-bottom: 1.5rem;
-    }
-
-    .notif-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 300;
-      color: var(--nuit);
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-
-    .notif-sub {
-      font-size: 0.78rem;
-      color: var(--nuit);
-      opacity: 0.5;
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 0;
-      border: 0.5px solid var(--sable);
-      border-radius: 2px;
-      overflow: hidden;
-      max-width: 440px;
-      margin: 0 auto;
-    }
-
-    .form-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      padding: 0.9rem 1.25rem;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      color: var(--nuit);
-      font-weight: 300;
-    }
-
-    .form-input::placeholder {
-      color: var(--nuit);
-      opacity: 0.35;
-      letter-spacing: 0.2em;
-      font-size: 0.68rem;
-      text-transform: uppercase;
-    }
-
-    .form-btn {
-      background: var(--nuit);
-      color: var(--lin);
-      border: none;
-      padding: 0.9rem 1.5rem;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.25s, color 0.25s;
-      font-weight: 300;
-    }
-
-    .form-btn:hover { background: var(--marine); }
-
-    .form-note {
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      color: var(--nuit);
-      opacity: 0.35;
-      margin-top: 1rem;
-      text-transform: uppercase;
-    }
-
-    .success-msg {
-      display: none;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--calanque);
-      margin-top: 1rem;
-    }
+    /* IDENTITÉ */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-val { padding: 1rem 0; border-bottom: 0.5px solid var(--lin-fonce); display: flex; justify-content: space-between; align-items: baseline; }
+    .about-val:first-child { border-top: 0.5px solid var(--lin-fonce); }
+    .val-key { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--sable); }
+    .val-val { font-family: var(--serif); font-size: 1.05rem; font-weight: 300; }
+    .section-body { font-size: 0.85rem; line-height: 1.9; opacity: 0.65; }
 
     /* FOOTER */
-    footer {
-      background: var(--nuit);
-      padding: 3rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      letter-spacing: 0.35em;
-      color: var(--lin);
-      font-weight: 300;
-    }
-
-    .footer-center {
-      font-size: 0.58rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--lin);
-      opacity: 0.25;
-      text-align: center;
-    }
-
-    .footer-right {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-link {
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--lin);
-      opacity: 0.4;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .footer-link:hover { opacity: 0.8; }
+    footer { background: var(--nuit); padding: 2.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: var(--serif); font-size: 1rem; letter-spacing: 0.3em; color: var(--lin); }
+    .footer-copy { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lin); opacity: 0.25; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--lin); opacity: 0.4; transition: opacity 0.2s; }
+    .footer-links a:hover { opacity: 0.9; }
 
     /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* RESPONSIVE */
     @media (max-width: 640px) {
-      .section-identite { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
-      .produits-grid { grid-template-columns: 1fr 1fr; }
-      nav { padding: 1.25rem 1.5rem; }
-      footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-      .footer-right { flex-wrap: wrap; }
+      .produits-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">CÔTE VIVE</a>
-    <span class="nav-right">Riviera · France</span>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">CÔTE VIVE</a>
+      <div class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#commander">Commander</a>
+        <a href="#apropos">À propos</a>
+      </div>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -512,130 +140,174 @@
     <p class="hero-eyebrow">Nés sur la côte · Faits pour durer</p>
     <h1 class="hero-title">CÔTE<br><em>VIVE</em></h1>
     <div class="hero-divider"></div>
-    <p class="hero-sub">Sud de France · Drops limités · Bientôt disponible</p>
+    <p class="hero-sub">Drop 01 · Disponible maintenant · 25€</p>
+    <a href="#collection" class="btn">Voir la collection</a>
   </section>
 
   <!-- TICKER -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-inner">
-      <span class="ticker-item">CÔTE VIVE</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">RIVIERA · SUD DE FRANCE</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">DROPS LIMITÉS</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">LIFESTYLE MÉDITERRANÉEN</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">CONFECTIONNÉ DANS LE VAR</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">CÔTE VIVE</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">RIVIERA · SUD DE FRANCE</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">DROPS LIMITÉS</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">LIFESTYLE MÉDITERRANÉEN</span>
-      <span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">CONFECTIONNÉ DANS LE VAR</span>
-      <span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">CÔTE VIVE</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">RIVIERA · SUD DE FRANCE</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">DROP 01 · 25€</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">STOCK LIMITÉ</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">TOULON · VAR</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">CÔTE VIVE</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">RIVIERA · SUD DE FRANCE</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">DROP 01 · 25€</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">STOCK LIMITÉ</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">TOULON · VAR</span><span class="ticker-item ticker-dot">✦</span>
     </div>
   </div>
 
-  <!-- IDENTITÉ -->
-  <section class="section-identite">
-    <div class="identite-left reveal">
-      <p class="section-number">01 — L'essence</p>
-      <h2 class="section-title">Une marque qui<br>porte <em>le Sud</em><br>en elle.</h2>
-      <p class="section-body">
-        CÔTE VIVE naît d'une conviction simple : le style méditerranéen n'a pas besoin de crier pour exister. Chaque pièce est pensée pour durer, pour voyager, pour traverser les saisons sans vieillir.
-      </p>
-    </div>
-    <div class="identite-right reveal">
-      <div class="identite-item">
-        <span class="identite-key">Origine</span>
-        <span class="identite-val">Toulon, Var</span>
-      </div>
-      <div class="identite-item">
-        <span class="identite-key">Univers</span>
-        <span class="identite-val">Riviera lifestyle</span>
-      </div>
-      <div class="identite-item">
-        <span class="identite-key">Production</span>
-        <span class="identite-val">Drops limités</span>
-      </div>
-      <div class="identite-item">
-        <span class="identite-key">Matières</span>
-        <span class="identite-val">Naturelles, durables</span>
-      </div>
-      <div class="identite-item">
-        <span class="identite-key">Philosophie</span>
-        <span class="identite-val">Moins, mais mieux</span>
-      </div>
-    </div>
-  </section>
-
   <!-- COLLECTION -->
-  <section class="section-collection">
-    <p class="collection-eyebrow reveal">02 — Première collection</p>
-    <h2 class="collection-title reveal">DROP 01<br>Été 2025</h2>
-    <p class="collection-sub reveal">Bientôt · En préparation</p>
+  <div class="section" id="collection">
+    <p class="section-label reveal">01 — Drop 01 · Été</p>
+    <h2 class="section-title reveal">La <em>collection</em></h2>
 
     <div class="produits-grid">
+
+      <!-- T-SHIRT 1 CALANQUE -->
       <div class="produit-card reveal">
-        <div class="produit-icon">
-          <svg width="24" height="30" viewBox="0 0 24 30" fill="none">
-            <path d="M8 2 L4 8 L2 8 L2 28 L22 28 L22 8 L20 8 L16 2 Q12 5 8 2Z" stroke="#C8B89A" stroke-width="0.8" fill="none"/>
+        <div class="produit-img">
+          <span class="produit-badge">Drop limité</span>
+          <svg viewBox="0 0 600 450" style="width:100%;height:100%;background:#C8B89A;" xmlns="http://www.w3.org/2000/svg">
+            <!-- Mockup tshirt calanque sable -->
+            <text x="300" y="195" font-family="Georgia,serif" font-size="22" font-weight="400" letter-spacing="8" text-anchor="middle" fill="#1A1814">CÔTE VIVE</text>
+            <line x1="215" y1="207" x2="385" y2="207" stroke="#1A1814" stroke-width="0.6"/>
+            <text x="300" y="222" font-family="Arial,sans-serif" font-size="7" letter-spacing="5" text-anchor="middle" fill="#5F5E5A">RIVIERA · FRANCE</text>
+            <!-- Soleil -->
+            <circle cx="300" cy="295" r="22" fill="none" stroke="#1A1814" stroke-width="0.8"/>
+            <line x1="300" y1="267" x2="300" y2="258" stroke="#1A1814" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="300" y1="323" x2="300" y2="332" stroke="#1A1814" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="272" y1="295" x2="263" y2="295" stroke="#1A1814" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="328" y1="295" x2="337" y2="295" stroke="#1A1814" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="280" y1="275" x2="274" y2="269" stroke="#1A1814" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="320" y1="315" x2="326" y2="321" stroke="#1A1814" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="320" y1="275" x2="326" y2="269" stroke="#1A1814" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="280" y1="315" x2="274" y2="321" stroke="#1A1814" stroke-width="0.7" stroke-linecap="round"/>
+            <!-- Vagues -->
+            <path d="M180 340 Q210 330 240 340 Q270 350 300 340 Q330 330 360 340 Q390 350 420 340" fill="none" stroke="#1A1814" stroke-width="0.9" stroke-linecap="round"/>
+            <path d="M190 358 Q220 350 250 358 Q280 366 310 358 Q340 350 370 358 Q395 352 415 358" fill="none" stroke="#1A1814" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+            <text x="300" y="400" font-family="Georgia,serif" font-size="16" font-style="italic" letter-spacing="1" text-anchor="middle" fill="#1A1814">Born on the shore.</text>
           </svg>
         </div>
-        <span class="produit-label">T-Shirt</span>
-        <span class="produit-coming">À venir</span>
+        <div class="produit-info">
+          <p class="produit-ref">REF · CV-01-CALANQUE</p>
+          <p class="produit-nom">T-shirt Calanque</p>
+          <p class="produit-desc">Coloris Sable · Print calanque méditerranéenne dos · Logo CÔTE VIVE centré poitrine · Coton 190g</p>
+          <div class="produit-footer">
+            <span class="produit-prix">25€</span>
+            <span class="produit-tailles">S · M · L · XL</span>
+          </div>
+        </div>
       </div>
+
+      <!-- T-SHIRT 2 PHARE -->
       <div class="produit-card reveal">
-        <div class="produit-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <path d="M4 6 L4 26 L24 26 L24 6 L20 2 L8 2 Z" stroke="#C8B89A" stroke-width="0.8" fill="none"/>
+        <div class="produit-img">
+          <span class="produit-badge">Drop limité</span>
+          <svg viewBox="0 0 600 450" style="width:100%;height:100%;background:#4A6741;" xmlns="http://www.w3.org/2000/svg">
+            <!-- Mockup tshirt phare vert foret -->
+            <text x="300" y="195" font-family="Georgia,serif" font-size="22" font-weight="400" letter-spacing="8" text-anchor="middle" fill="#F0ECE4">CÔTE VIVE</text>
+            <line x1="215" y1="207" x2="385" y2="207" stroke="#F0ECE4" stroke-width="0.6"/>
+            <text x="300" y="222" font-family="Arial,sans-serif" font-size="7" letter-spacing="5" text-anchor="middle" fill="#C8D5C5">RIVIERA · FRANCE</text>
+            <!-- Phare -->
+            <rect x="278" y="258" width="44" height="80" fill="none" stroke="#F0ECE4" stroke-width="1"/>
+            <polygon points="268,258 332,258 320,238 280,238" fill="none" stroke="#F0ECE4" stroke-width="1"/>
+            <rect x="272" y="230" width="56" height="10" fill="none" stroke="#F0ECE4" stroke-width="0.8"/>
+            <line x1="268" y1="242" x2="200" y2="270" stroke="#F0ECE4" stroke-width="0.6" stroke-dasharray="4 4" opacity="0.4"/>
+            <line x1="332" y1="242" x2="400" y2="270" stroke="#F0ECE4" stroke-width="0.6" stroke-dasharray="4 4" opacity="0.4"/>
+            <rect x="262" y="338" width="76" height="8" fill="none" stroke="#F0ECE4" stroke-width="0.8"/>
+            <!-- Vagues -->
+            <path d="M180 360 Q210 350 240 360 Q270 370 300 360 Q330 350 360 360 Q390 370 420 360" fill="none" stroke="#F0ECE4" stroke-width="0.9" stroke-linecap="round"/>
+            <text x="300" y="405" font-family="Georgia,serif" font-size="16" letter-spacing="1" text-anchor="middle" fill="#F0ECE4">Light the way.</text>
           </svg>
         </div>
-        <span class="produit-label">Hoodie</span>
-        <span class="produit-coming">À venir</span>
+        <div class="produit-info">
+          <p class="produit-ref">REF · CV-01-PHARE</p>
+          <p class="produit-nom">T-shirt Phare</p>
+          <p class="produit-desc">Coloris Vert Forêt · Print phare méditerranéen dos · Logo CÔTE VIVE centré poitrine ivoire · Coton 190g</p>
+          <div class="produit-footer">
+            <span class="produit-prix">25€</span>
+            <span class="produit-tailles">S · M · L · XL</span>
+          </div>
+        </div>
       </div>
-      <div class="produit-card reveal">
-        <div class="produit-icon">
-          <svg width="30" height="20" viewBox="0 0 30 20" fill="none">
-            <path d="M2 14 Q15 2 28 14" stroke="#C8B89A" stroke-width="0.8" fill="none"/>
-            <path d="M6 14 L6 19 L24 19 L24 14" stroke="#C8B89A" stroke-width="0.8" fill="none"/>
-          </svg>
+
+    </div>
+  </div>
+
+  <!-- COMMENT COMMANDER -->
+  <div class="section-dark" id="commander">
+    <div class="section">
+      <div class="section-dark-inner">
+        <p class="section-label reveal" style="color:var(--calanque);">02 — Commander</p>
+        <h2 class="section-title reveal" style="color:var(--lin);">Simple comme<br><em style="color:var(--calanque);">un message.</em></h2>
+
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <div class="step-num">01</div>
+            <div class="step-title">Choisissez votre pièce</div>
+            <div class="step-desc">Notez la <strong>référence produit</strong> et votre <strong>taille</strong> (S, M, L ou XL)</div>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">02</div>
+            <div class="step-title">Envoyez un message</div>
+            <div class="step-desc">Contactez-nous sur Instagram <strong>@cotevive</strong> avec vos informations</div>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">03</div>
+            <div class="step-title">Retrait à Toulon</div>
+            <div class="step-desc">On confirme et on organise le <strong>retrait en main propre</strong> · Paiement sur place</div>
+          </div>
         </div>
-        <span class="produit-label">Casquette</span>
-        <span class="produit-coming">À venir</span>
+
+        <p class="section-label" style="color:var(--calanque); text-align:center; margin-bottom:1rem;">Format du message Instagram</p>
+        <div class="message-box reveal">
+          <div class="message-label">Exemple de message à envoyer</div>
+          <div class="message-line">Référence : <span>CV-01-CALANQUE</span> (ou CV-01-PHARE)</div>
+          <div class="message-line">Taille : <span>M</span> (S / M / L / XL)</div>
+          <div class="message-line">Prénom & Nom : <span>Jean Dupont</span></div>
+          <div class="message-line">Email ou téléphone : <span>jean@email.com</span></div>
+        </div>
+
+        <div style="text-align:center;">
+          <a href="https://instagram.com/cotevive" target="_blank" class="btn btn-insta">
+            Commander sur Instagram @cotevive
+          </a>
+          <p style="font-size:0.65rem; letter-spacing:0.2em; color:var(--lin); opacity:0.3; margin-top:1rem; text-transform:uppercase;">Retrait Toulon · La Valette · Paiement sur place</p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- INSCRIPTION -->
-  <section class="section-notif" id="notify">
-    <p class="notif-eyebrow reveal">03 — Sois le premier</p>
-    <h2 class="notif-title reveal">Avant tout<br>le monde.</h2>
-    <p class="notif-sub reveal">
-      Le Drop 01 sera en série limitée. Laisse ton email pour être notifié en priorité dès l'ouverture de la boutique.
-    </p>
-    <div class="reveal">
-      <div class="form-row">
-        <input type="email" class="form-input" id="emailInput" placeholder="Ton adresse email" />
-        <button class="form-btn" onclick="handleSubmit()">Rejoindre</button>
+  <!-- À PROPOS -->
+  <div class="section" id="apropos">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="section-label">03 — L'essence</p>
+        <h2 class="section-title">Une marque qui<br>porte <em>le Sud</em><br>en elle.</h2>
+        <p class="section-body">CÔTE VIVE naît à Toulon, dans le Var. Chaque pièce est pensée pour durer, pour voyager, pour traverser les saisons sans vieillir. Moins, mais mieux.</p>
       </div>
-      <p class="form-note">Zéro spam. Un seul email : le jour du drop.</p>
-      <p class="success-msg" id="successMsg">✦ Tu es sur la liste. À très vite.</p>
+      <div class="reveal">
+        <div class="about-val"><span class="val-key">Origine</span><span class="val-val">Toulon, Var</span></div>
+        <div class="about-val"><span class="val-key">Univers</span><span class="val-val">Riviera lifestyle</span></div>
+        <div class="about-val"><span class="val-key">Production</span><span class="val-val">Drop limité · Stock local</span></div>
+        <div class="about-val"><span class="val-key">Vente</span><span class="val-val">Locale · Retrait en main propre</span></div>
+        <div class="about-val"><span class="val-key">Philosophie</span><span class="val-val">Moins, mais mieux</span></div>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
   <footer>
-    <span class="footer-logo">CÔTE VIVE</span>
-    <span class="footer-center">© 2025 Côte Vive · Toulon, France</span>
-    <div class="footer-right">
-      <a href="https://instagram.com/cotevive" class="footer-link" target="_blank">Instagram</a>
-      <a href="mailto:stevenmlt07@gmail.com" class="footer-link">Contact</a>
+    <div class="footer-inner">
+      <span class="footer-logo">CÔTE VIVE</span>
+      <span class="footer-copy">© 2025 Côte Vive · Toulon, France</span>
+      <div class="footer-links">
+        <a href="https://instagram.com/cotevive" target="_blank">Instagram</a>
+        <a href="mailto:contact@cotevive.fr">Contact</a>
+      </div>
     </div>
   </footer>
 
@@ -648,22 +320,8 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
-
-    function handleSubmit() {
-      const input = document.getElementById('emailInput');
-      const msg = document.getElementById('successMsg');
-      const val = input.value.trim();
-      if (!val || !val.includes('@')) {
-        input.style.borderRight = '2px solid #C8B89A';
-        setTimeout(() => input.style.borderRight = '', 1000);
-        return;
-      }
-      input.parentElement.style.opacity = '0.4';
-      input.parentElement.style.pointerEvents = 'none';
-      msg.style.display = 'block';
-    }
   </script>
 
 </body>
