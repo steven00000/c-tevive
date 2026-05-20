@@ -54,24 +54,24 @@
 
     /* NOTICE PRÉCOMMANDE */
     .notice-bar { background: var(--calanque); color: var(--lin); text-align: center; padding: 0.75rem 2rem; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; }
-
+    
     /* SECTIONS */
     .section { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
     .section-label { font-size: 0.6rem; letter-spacing: 0.45em; text-transform: uppercase; color: var(--sable); margin-bottom: 1.25rem; }
     .section-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 1rem; }
     .section-title em { font-style: italic; color: var(--marine); }
 
-    /* PRODUITS */
+     /* PRODUITS */
     .produits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-bottom: 4rem; }
-
+ 
     .produit-card { position: relative; }
     .produit-badge { display: inline-block; background: var(--nuit); color: var(--lin); font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; padding: 5px 12px; margin-bottom: 1rem; }
     .produit-badge-precommande { background: var(--calanque); }
-
+ 
     .produit-img { background: transparent; margin-bottom: 1.25rem; overflow: hidden; }
     .produit-img img { width: 100%; height: auto; object-fit: contain; transition: transform 0.6s ease; }
     .produit-card:hover .produit-img img { transform: scale(1.02); }
-
+ 
     .produit-ref { font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--sable); margin-bottom: 0.4rem; }
     .produit-nom { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin-bottom: 0.3rem; }
     .produit-coloris { font-size: 0.7rem; color: var(--nuit); opacity: 0.5; margin-bottom: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
@@ -79,7 +79,7 @@
     .produit-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 0.5px solid var(--lin-fonce); }
     .produit-prix { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; }
     .produit-tailles { font-size: 0.62rem; letter-spacing: 0.2em; opacity: 0.45; text-transform: uppercase; }
-
+    
     /* NOTICE DÉLAI */
     .delai-box { background: var(--nuit); color: var(--lin); border-radius: 4px; padding: 1.5rem 2rem; margin-bottom: 3rem; display: flex; gap: 1.5rem; align-items: flex-start; }
     .delai-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
@@ -171,12 +171,12 @@
     <div class="ticker-inner">
       <span class="ticker-item">CÔTE VIVE</span><span class="ticker-item ticker-dot">✦</span>
       <span class="ticker-item">RIVIERA · SUD DE FRANCE</span><span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">DROP 01 · PRÉCOMMANDE</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">DROP 01 · 25€ → 20€</span><span class="ticker-item ticker-dot">✦</span>
       <span class="ticker-item">STOCK LIMITÉ · 30 PIÈCES</span><span class="ticker-item ticker-dot">✦</span>
       <span class="ticker-item">TOULON · VAR</span><span class="ticker-item ticker-dot">✦</span>
       <span class="ticker-item">CÔTE VIVE</span><span class="ticker-item ticker-dot">✦</span>
       <span class="ticker-item">RIVIERA · SUD DE FRANCE</span><span class="ticker-item ticker-dot">✦</span>
-      <span class="ticker-item">DROP 01 · PRÉCOMMANDE</span><span class="ticker-item ticker-dot">✦</span>
+      <span class="ticker-item">DROP 01 · 25€ → 20€</span><span class="ticker-item ticker-dot">✦</span>
       <span class="ticker-item">STOCK LIMITÉ · 30 PIÈCES</span><span class="ticker-item ticker-dot">✦</span>
       <span class="ticker-item">TOULON · VAR</span><span class="ticker-item ticker-dot">✦</span>
     </div>
@@ -189,12 +189,12 @@
     <p style="font-size:0.8rem; opacity:0.5; margin-bottom:3rem; line-height:1.7;" class="reveal">
       Visuels générés par IA — photos réelles des pièces disponibles à la réception du stock.
     </p>
-
+ 
     <div class="produits-grid">
-
+ 
       <!-- T-SHIRT CALANQUE -->
       <div class="produit-card reveal">
-        <span class="produit-badge produit-badge-precommande">Précommande</span>
+        <span class="produit-badge produit-badge-precommande">Précommande</span> <span class="produit-badge" style="background:#C0392B; margin-left:6px;">-20%</span>
         <div class="produit-img">
           <img src="Calanque_Mockup.png" alt="T-shirt Calanque CÔTE VIVE — coloris Lin">
         </div>
@@ -203,14 +203,14 @@
         <p class="produit-coloris">Coloris Lin</p>
         <p class="produit-desc">Illustration calanque méditerranéenne dos · Logo CÔTE VIVE centré poitrine · 100% coton 180g · Coupe regular/large · À confirmer</p>
         <div class="produit-footer">
-          <span class="produit-prix">20€</span>
+          <span style="font-family:var(--serif); font-size:1rem; font-weight:300; text-decoration:line-through; opacity:0.4; margin-right:8px;">25€</span><span class="produit-prix" style="color:#C0392B;">20€</span>
           <span class="produit-tailles">S · M · L · XL</span>
         </div>
       </div>
-
+ 
       <!-- T-SHIRT PHARE -->
       <div class="produit-card reveal">
-        <span class="produit-badge produit-badge-precommande">Précommande</span>
+        <span class="produit-badge produit-badge-precommande">Précommande</span> <span class="produit-badge" style="background:#C0392B; margin-left:6px;">-20%</span>
         <div class="produit-img">
           <img src="Phare_Mockup.png" alt="T-shirt Phare CÔTE VIVE — coloris Vert Glacé">
         </div>
@@ -219,11 +219,11 @@
         <p class="produit-coloris">Coloris Vert Glacé</p>
         <p class="produit-desc">Illustration phare méditerranéen dos · Logo CÔTE VIVE centré poitrine ivoire · 100% coton 180g · Coupe regular/large · À confirmer</p>
         <div class="produit-footer">
-          <span class="produit-prix">20€</span>
+          <span style="font-family:var(--serif); font-size:1rem; font-weight:300; text-decoration:line-through; opacity:0.4; margin-right:8px;">25€</span><span class="produit-prix" style="color:#C0392B;">20€</span>
           <span class="produit-tailles">S · M · L · XL</span>
         </div>
       </div>
-
+ 
     </div>
 
     <!-- NOTICE DÉLAI -->
